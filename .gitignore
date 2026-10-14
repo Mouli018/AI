@@ -6,3 +6,4 @@ results/llm_cache.jsonl
 *.blg
 *.bbl
 *.out
+/venv/

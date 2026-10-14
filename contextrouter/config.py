@@ -25,8 +25,8 @@ def get_settings() -> Settings:
     return Settings(
         base_url=os.getenv("LLM_BASE_URL", "https://api.groq.com/openai/v1"),
         api_key=os.getenv("LLM_API_KEY") or os.getenv("GROQ_API_KEY", ""),
-        main_model=os.getenv("MAIN_MODEL", "llama-3.3-70b-versatile"),
-        fast_model=os.getenv("FAST_MODEL", "llama-3.1-8b-instant"),
+        main_model=os.getenv("MAIN_MODEL", "openai/gpt-oss-120b"),
+        fast_model=os.getenv("FAST_MODEL", "openai/gpt-oss-20b"),
         mock=os.getenv("MOCK_LLM", "0") == "1",
         rpm=int(os.getenv("LLM_RPM", "25")),
         cache_path=os.getenv("CACHE_PATH", "results/llm_cache.jsonl"),

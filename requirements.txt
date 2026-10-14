@@ -11,6 +11,7 @@ uvicorn>=0.29
 httpx>=0.27
 pypdf>=4.0
 datasets>=2.19          # only needed by scripts/prepare_data.py (HF download)
+qdrant-client>=1.19     # Qdrant Vector DB collection storage
 # optional dense retrieval (RETRIEVER=dense|hybrid):
 # sentence-transformers>=2.7
 # faiss-cpu>=1.8

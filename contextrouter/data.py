@@ -6,7 +6,8 @@ from pathlib import Path
 
 
 def load_questions(path: str, n: int | None = None) -> list[dict]:
-    qs = json.loads(Path(path).read_text())
+    with open(path, "r", encoding="utf-8") as f:
+        qs = json.load(f)
     return qs[:n] if n else qs
 
 

@@ -15,8 +15,14 @@ class Retriever:
         names = self.vec.get_feature_names_out()
         self._idf = dict(zip(names, self.vec.idf_))
         self._max_idf = float(self.vec.idf_.max())
-        self.emb = None
-        if kind in ("dense", "hybrid"):
+        self.qdrant = None
+        if kind == "qdrant":
+            from .qdrant_store import QdrantStore
+            self.qdrant = QdrantStore()
+            info = self.qdrant.get_info()
+            if info.get("status") != "active" or info.get("points_count", 0) == 0:
+                self.qdrant.index_corpus(self.docs)
+        elif kind in ("dense", "hybrid"):
             self._init_dense()
 
     def _init_dense(self):
@@ -39,6 +45,8 @@ class Retriever:
         return (x - lo) / (hi - lo) if hi > lo else np.zeros_like(x)
 
     def search(self, query: str, k: int) -> list[Chunk]:
+        if self.kind == "qdrant" and self.qdrant is not None:
+            return self.qdrant.search(query, k)
         sp = (self.X @ self.vec.transform([query]).T).toarray().ravel()
         if self.emb is not None:
             qe = self.model.encode([query], normalize_embeddings=True, show_progress_bar=False)[0]
