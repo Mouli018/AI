@@ -1,0 +1,18 @@
+{
+ "data": "data/hotpot_subset.json",
+ "n": 100,
+ "paragraphs": 991,
+ "retriever": "tfidf",
+ "main_model": "llama-3.3-70b-versatile",
+ "fast_model": "llama-3.1-8b-instant",
+ "mock": false,
+ "judge": false,
+ "sweep_budgets": [
+  150,
+  300,
+  600,
+  900,
+  1500
+ ],
+ "sweep_n": 60
+}

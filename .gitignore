@@ -1,0 +1,8 @@
+__pycache__/
+.env
+results/llm_cache.jsonl
+*.aux
+*.log
+*.blg
+*.bbl
+*.out
