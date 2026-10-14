@@ -3,8 +3,8 @@
  "n": 100,
  "paragraphs": 991,
  "retriever": "tfidf",
- "main_model": "openai/gpt-oss-120b",
- "fast_model": "openai/gpt-oss-20b",
+ "main_model": "gpt-4o-mini",
+ "fast_model": "gpt-4o-mini",
  "mock": false,
  "judge": false,
  "sweep_budgets": [

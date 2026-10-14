@@ -16,6 +16,9 @@ class Retriever:
         self._idf = dict(zip(names, self.vec.idf_))
         self._max_idf = float(self.vec.idf_.max())
         self.qdrant = None
+        self.emb = None
+        self.model = None
+        self.index = None
         if kind == "qdrant":
             from .qdrant_store import QdrantStore
             self.qdrant = QdrantStore()
